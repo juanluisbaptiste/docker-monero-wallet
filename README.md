@@ -1,20 +1,21 @@
 
-# Unofficial bitmonero Monero wallet and daemon for docker
+# Unofficial Monero wallet and daemon for docker
 
 Unofficial [monero](http://www.getmonero.org/) wallet and daemon docker images. This repository contains the
 *Dockerfiles* and all other files needed to build and run these containers. Having the wallet available as docker container has some advantages like:
 
-* Run the wallet on non supported platforms like Synology NAS products.
 * Run the daemon on a server that is always on and connected to the Internet like a Synology NAS, and avoid the long blockchain sync waits each time the monerod daemon is started in your laptop.
+* Run the wallet on non supported platforms like Synology NAS products.
 
 ## Build instructions
 
-We use `docker-compose` to build the images. Clone this repo and then:
+We use `docker-compose` to build the images. Clone this repository and then:
 
     cd docker-monero-wallet
     sudo docker-compose -f docker-compose-dev.yml build
 
-This command will build the wallet and the monero daemon as separate images that you can launch independently.
+This command will build the wallet and the monero daemon as separate images that
+you can launch independently.
 
 ## How to run the Wallet
 
@@ -22,9 +23,11 @@ The `docker-compose` file mounts your X11 session's socket (/tmp/.X11-unix) so t
 
     sudo docker-compose -p monerowallet up
 
-This will pull and bring up all needed containers, link them and mount volumes according to the `docker-compose-prod.yml` configuration file.
+This will pull and bring up monerod and wallet containers, link them and mount
+volumes according to the `docker-compose.yml` configuration file.
 
-To start the containers in production mode the the `-d` parameter to the previous command:
+To start the containers in production mode the the `-d` parameter to the previous
+command:
 
     sudo docker-compose -p monerowallet up -d
 
@@ -32,12 +35,17 @@ You can see the container logs with this command:
 
   sudo docker-compose -p monerowallet logs -f
 
-After the containers finish starting up the Monero wallet will show up to be used as usual.
+After the containers finish starting up the Monero wallet will show up in your
+screen as usual.
 
-### Running the monerod daemon only
+## Running the monerod daemon only
 
-If you just want to start the monerod daemon then you can only start the monerod container:
+If you just want to start the monerod daemon, for example to have it running
+permanently on a remote server or a NAS system, you can only start the monerod
+container:
 
     sudo docker-compose -f docker-compose-prod.yml -p monerowallet monerod up -d
 
-The `docker-compose` file exposes to the host the port 18081 so you can connect with your local desktop wallet (in that case you should configure an username and password for the daemon).
+The `docker-compose` file exposes to the host the port 18081 so you can connect
+with your local desktop wallet (in that case you should configure an username
+and password for the daemon).
