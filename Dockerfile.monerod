@@ -2,13 +2,13 @@
 FROM juanluisbaptiste/monero-wallet:latest
 COPY start_monerod.sh /
 USER root
-RUN chown monero:monero start_monerod.sh && \
-    chmod 755 start_monerod.sh && \
-    rm -f monero-gui/monero-wallet-* && \
-    rm -fr monero-gui/
-USER monero
+RUN apt-get install -y supervisor && \
+    chown monero:monero /start_monerod.sh && \
+    chmod 755 /start_monerod.sh
+#Supervisord configuration
+COPY etc/supervisor/monerod.conf /etc/supervisor/conf.d/
 # blockchain loaction
 VOLUME /home/monero/.bitmonero
-EXPOSE 18081
-#ENTRYPOINT ["/bin/bash"]
-CMD ["/home/monero/start_monerod.sh"]
+EXPOSE 18080
+RUN ls -l /etc/supervisor
+ENTRYPOINT ["/start_monerod.sh"]

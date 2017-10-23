@@ -25,7 +25,7 @@ services:
       context: .
       dockerfile: Dockerfile.monerod
     ports:
-    #- "18080:18080"
+    - "18080:18080"
     - "18081:18081"
     # expose:
     # - 18081

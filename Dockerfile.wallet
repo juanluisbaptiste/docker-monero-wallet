@@ -15,7 +15,5 @@ WORKDIR /home/monero
 RUN curl ${MONERO_GUI_DOWNLOAD_URL} -O && \
     tar -xjf monero-gui-linux-x64-v${MONERO_VERSION}.tar.bz2 && \
     rm monero-gui-linux-x64-v${MONERO_VERSION}.tar.bz2 && \
-    mv monero-gui-${MONERO_VERSION} monero-gui && \
-    rm -f monero-gui/monerod
-ENTRYPOINT ["/bin/bash"]
-CMD ["/home/monero/monero-gui/start-gui.sh"]
+    mv monero-gui-${MONERO_VERSION} monero-gui
+ENTRYPOINT ["/home/monero/monero-gui/start-gui.sh"]
