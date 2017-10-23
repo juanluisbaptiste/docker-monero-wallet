@@ -1,6 +1,6 @@
 # Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero --network=host --name=monerod -td kannix/monero-full-node
 FROM juanluisbaptiste/monero-wallet:latest
-ADD start_monerod.sh .
+COPY start_monerod.sh /
 USER root
 RUN chown monero:monero start_monerod.sh && \
     chmod 755 start_monerod.sh && \
