@@ -38,4 +38,4 @@ services:
     #- /volume1/Monero_blockchain:/home/monero/.bitmonero
     - /home/juancho/.bitmonero:/home/monero/.bitmonero
     - /etc/localtime:/etc/localtime:ro
-    command: /bin/true
+    entrypoint: /bin/true
