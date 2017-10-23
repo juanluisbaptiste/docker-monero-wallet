@@ -1,0 +1,41 @@
+version: '2'
+services:
+  monero-wallet:
+    image: juanluisbaptiste/monero-wallet:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.wallet
+    container_name: monero-wallet
+    volumes_from:
+    - wallet-data
+    environment:
+      - DISPLAY=unix$DISPLAY
+  wallet-data:
+    image: juanluisbaptiste/monero-wallet:latest
+    container_name: wallet-data
+    volumes:
+    -  /tmp/.X11-unix:/tmp/.X11-unix
+    - /home/juancho/Monero:/home/monero/Monero
+    command: /bin/true
+  monerod:
+    image: juanluisbaptiste/monerod:latest
+    container_name: monerod
+    privileged: true
+    build:
+      context: .
+      dockerfile: Dockerfile.monerod
+    ports:
+    #- "18080:18080"
+    - "18081:18081"
+    # expose:
+    # - 18081
+    volumes_from:
+    - monerod-data
+  monerod-data:
+    image: juanluisbaptiste/monerod:latest
+    container_name: monerod-data
+    volumes:
+    #- /volume1/Monero_blockchain:/home/monero/.bitmonero
+    - /home/juancho/.bitmonero:/home/monero/.bitmonero
+    - /etc/localtime:/etc/localtime:ro
+    command: /bin/true

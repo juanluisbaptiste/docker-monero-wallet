@@ -1,0 +1,29 @@
+version: '2'
+services:
+  monero-wallet:
+    image: juanluisbaptiste/monero-wallet:latest
+    container_name: monero-wallet
+    volumes_from:
+    - wallet-data
+    environment:
+      - DISPLAY=unix$DISPLAY
+  wallet-data:
+    image: juanluisbaptiste/monero-wallet:latest
+    container_name: wallet-data
+    volumes:
+    -  /tmp/.X11-unix:/tmp/.X11-unix
+    command: /bin/true
+  monerod:
+    image: juanluisbaptiste/monerod:latest
+    container_name: monerod
+    ports:
+    - "18081:18081"
+    volumes_from:
+    - monerod-data
+  monerod-data:
+    image: juanluisbaptiste/monerod:latest
+    container_name: monerod-data
+    volumes:
+    - /volume1/Monero_blockchain:/home/monero/.bitmonero
+    - /etc/localtime:/etc/localtime:ro
+    command: /bin/true
