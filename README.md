@@ -1,7 +1,7 @@
 
-# Unofficial Monero wallet and daemon for docker
+# Unofficial Monero wallet GUI and daemon for docker
 
-Unofficial [monero](http://www.getmonero.org/) wallet and daemon docker images. This repository contains the
+Unofficial [monero](http://www.getmonero.org/) wallet GUI and daemon docker images. This repository contains the
 *Dockerfiles* and all other files needed to build and run these containers. Having the wallet available as docker container has some advantages like:
 
 * Run the daemon on a server that is always on and connected to the Internet like a Synology NAS, and avoid the long blockchain sync waits each time the monerod daemon is started in your laptop.
