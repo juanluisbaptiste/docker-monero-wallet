@@ -1,6 +1,7 @@
 #!/bin/bash
-env
+#monerod docker startup script
 DEFAULT_LOG_LEVEL=1
+
 if env | grep -q ^LOG_LEVEL=
 then
   echo "LOG_LEVEL set to ${LOG_LEVEL}"
