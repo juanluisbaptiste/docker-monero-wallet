@@ -10,6 +10,8 @@ services:
     - wallet-data
     environment:
       - DISPLAY=unix$DISPLAY
+    links:
+      - monerod:monerod
   wallet-data:
     image: juanluisbaptiste/monero-wallet:latest
     container_name: wallet-data
