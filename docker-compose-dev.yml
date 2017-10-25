@@ -1,6 +1,6 @@
 version: '2'
 services:
-  monero-wallet:
+  wallet:
     image: juanluisbaptiste/monero-wallet:latest
     build:
       context: .
