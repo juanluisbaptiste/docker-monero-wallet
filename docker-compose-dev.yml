@@ -22,14 +22,16 @@ services:
   monerod:
     image: juanluisbaptiste/monerod:latest
     container_name: monerod
+    network_mode: host
     privileged: true
     build:
       context: .
       dockerfile: Dockerfile.monerod
-    ports:
-    - "18080:18080"
-    - "18081:18081"
+    # ports:
+    # - "18080:18080"
+    # - "18081:18081"
     # expose:
+    # - 18080
     # - 18081
     volumes_from:
     - monerod-data
