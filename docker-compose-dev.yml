@@ -35,12 +35,14 @@ services:
     # - 18081
     volumes_from:
     - monerod-data
+    environment:
+      - LOG_LEVEL=2
   monerod-data:
     image: ubuntu:latest
     container_name: monerod-data
     volumes:
     #- /volume1/Monero_blockchain:/home/monero/.bitmonero
-    - /home/juancho/.bitmonero:/home/monero/.bitmonero
+    - /home/juancho/.bitmonero_docker:/home/monero/.bitmonero
     - /etc/localtime:/etc/localtime:ro
     entrypoint: /bin/true
     command: /bin/true
