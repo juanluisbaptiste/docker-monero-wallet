@@ -36,10 +36,11 @@ services:
     volumes_from:
     - monerod-data
   monerod-data:
-    image: juanluisbaptiste/monerod:latest
+    image: ubuntu:latest
     container_name: monerod-data
     volumes:
     #- /volume1/Monero_blockchain:/home/monero/.bitmonero
     - /home/juancho/.bitmonero:/home/monero/.bitmonero
     - /etc/localtime:/etc/localtime:ro
     entrypoint: /bin/true
+    command: /bin/true
