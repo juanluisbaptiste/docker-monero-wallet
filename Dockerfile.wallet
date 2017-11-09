@@ -1,6 +1,6 @@
-# Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero --network=host --name=monerod -td kannix/monero-full-node
-FROM ubuntu:latest
-ENV MONERO_VERSION "0.11.0.0"
+FROM ubuntu:zesty
+MAINTAINER Juan Luis Baptiste <juan.baptiste@gmail.com>
+ENV MONERO_VERSION "0.11.1.0"
 ENV MONERO_GUI_DOWNLOAD_URL https://downloads.getmonero.org/gui/monero-gui-linux-x64-v${MONERO_VERSION}.tar.bz2
 RUN apt-get update
 RUN apt-get install -y curl bzip2 libfontconfig1 libfreetype6 libegl1-mesa \
