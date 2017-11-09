@@ -1,7 +1,8 @@
 FROM juanluisbaptiste/monero-wallet:latest
 COPY start_monerod.sh /
 USER root
-RUN apt-get install -y supervisor && \
+RUN apt-get update && \
+    apt-get install -y supervisor && \
     chown monero:monero /start_monerod.sh && \
     chmod 755 /start_monerod.sh
 #Supervisord configuration
