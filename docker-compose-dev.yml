@@ -8,35 +8,40 @@ services:
     container_name: monero-wallet
     volumes_from:
     - wallet-data
+    - monerod-data
     environment:
       - DISPLAY=unix$DISPLAY
-    links:
-      - monerod:monerod
+    # links:
+    #   - monerod:monerod
+    network_mode: host
+    # ports:
+    #  - "10000:10000"
   wallet-data:
     image: juanluisbaptiste/monero-wallet:latest
     container_name: wallet-data
     volumes:
     -  /tmp/.X11-unix:/tmp/.X11-unix
     - /home/juancho/Monero:/home/monero/Monero
+    - /etc/localtime:/etc/localtime:ro
     command: /bin/true
-  monerod:
-    image: juanluisbaptiste/monerod:latest
-    container_name: monerod
-    network_mode: host
-    privileged: true
-    build:
-      context: .
-      dockerfile: Dockerfile.monerod
-    # ports:
-    # - "18080:18080"
-    # - "18081:18081"
-    # expose:
-    # - 18080
-    # - 18081
-    volumes_from:
-    - monerod-data
-    environment:
-      - LOG_LEVEL=2
+  # monerod:
+  #   image: juanluisbaptiste/monerod:latest
+  #   container_name: monerod
+  #   network_mode: host
+  #   privileged: true
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.monerod
+  #   # ports:
+  #   # - "18080:18080"
+  #   # - "18081:18081"
+  #   # expose:
+  #   # - 18080
+  #   # - 18081
+  #   volumes_from:
+  #   - monerod-data
+  #   environment:
+  #     - LOG_LEVEL=1
   monerod-data:
     image: ubuntu:latest
     container_name: monerod-data
