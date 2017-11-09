@@ -28,6 +28,9 @@ WORKDIR /home/monero
 RUN curl ${MONERO_GUI_DOWNLOAD_URL} -O && \
     tar -xjf monero-gui-linux-x64-v${MONERO_VERSION}.tar.bz2 && \
     rm monero-gui-linux-x64-v${MONERO_VERSION}.tar.bz2 && \
-    mv monero-gui-${MONERO_VERSION} monero-gui
+    mv monero-gui-v${MONERO_VERSION} monero-gui && \
+    mkdir -p /home/monero/.config/monero-project
+COPY monero-core.conf /home/monero/.config/monero-project/
+
 CMD ["/entrypoint.sh"]
 EXPOSE 10000
