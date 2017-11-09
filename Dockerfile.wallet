@@ -10,10 +10,14 @@ RUN apt-get install -y curl bzip2 libfontconfig1 libfreetype6 libegl1-mesa \
                        libxcb1 libxcb-glx0 libx11-xcb1 && \
     apt-get clean && \
     useradd -ms /bin/bash monero
+COPY entrypoint.sh /
+RUN     chmod 755 /entrypoint.sh
+
 USER monero
 WORKDIR /home/monero
 RUN curl ${MONERO_GUI_DOWNLOAD_URL} -O && \
     tar -xjf monero-gui-linux-x64-v${MONERO_VERSION}.tar.bz2 && \
     rm monero-gui-linux-x64-v${MONERO_VERSION}.tar.bz2 && \
     mv monero-gui-${MONERO_VERSION} monero-gui
-ENTRYPOINT ["/home/monero/monero-gui/start-gui.sh"]
+CMD ["/entrypoint.sh"]
+EXPOSE 10000
