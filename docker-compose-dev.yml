@@ -11,7 +11,6 @@ services:
     - monerod-data
     environment:
       - DISPLAY=unix$DISPLAY
-      - ENABLE_WEB_VIEW=yes
     # links:
     #   - monerod:monerod
     network_mode: host
