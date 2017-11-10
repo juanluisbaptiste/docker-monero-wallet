@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [ "${DEBUG}" == "yes" ]; then
+  env
   set -x
 fi
 
