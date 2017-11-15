@@ -6,8 +6,8 @@ ENV DISPLAY=:100
 ENV WEB_VIEW_PORT 10000
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update
-RUN apt-get install -y curl bzip2 libfontconfig1 libfreetype6 libegl1-mesa \
+RUN apt-get update && \
+    apt-get install -y curl bzip2 libfontconfig1 libfreetype6 libegl1-mesa \
                        libgl1-mesa-glx libqt5core5a libqt5qml5 qt5-default \
                        qml-module-qtquick-controls qml-module-qtquick-xmllistmodel \
                        qttools5-dev-tools qml-module-qtquick-dialogs libx11-6 \
