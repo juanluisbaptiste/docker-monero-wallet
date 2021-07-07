@@ -11,7 +11,7 @@ RUN apt-get update && \
                        libgl1-mesa-glx libqt5core5a libqt5qml5 qt5-default \
                        qml-module-qtquick-controls qml-module-qtquick-xmllistmodel \
                        qttools5-dev-tools qml-module-qtquick-dialogs libx11-6 \
-                       libxcb1 libxcb-glx0 libx11-xcb1 wget && \
+                       libxcb1 libxcb-glx0 libx11-xcb1 wget python3-uinput && \
     apt-get clean && \
     useradd -ms /bin/bash -G xpra monero
 COPY local-entrypoint.sh /
