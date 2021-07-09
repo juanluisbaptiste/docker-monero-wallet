@@ -18,7 +18,7 @@ services:
     container_name: wallet-data
     volumes:
     -  /tmp/.X11-unix:/tmp/.X11-unix
-    - /home/juancho/Monero:/home/monero/Monero
+    - .volumes/monero-storage:/home/monero/monero-storage
     - /etc/localtime:/etc/localtime:ro
     command: /bin/true
   # monerod:
